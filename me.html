@@ -1,0 +1,242 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>I'm Sorry 💕</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            min-height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            padding: 20px;
+        }
+
+        .container {
+            background: white;
+            border-radius: 30px;
+            padding: 50px 40px;
+            max-width: 600px;
+            width: 100%;
+            box-shadow: 0 20px 60px rgba(0, 0, 0, 0.3);
+            text-align: center;
+            animation: fadeIn 0.8s ease;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .container::before {
+            content: '❤️';
+            position: absolute;
+            font-size: 400px;
+            opacity: 0.05;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            z-index: 0;
+            pointer-events: none;
+        }
+
+        .container > * {
+            position: relative;
+            z-index: 1;
+        }
+
+        @keyframes fadeIn {
+            from {
+                opacity: 0;
+                transform: translateY(-20px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        .name-form {
+            display: block;
+        }
+
+        .message-content {
+            display: none;
+        }
+
+        .emoji {
+            font-size: 80px;
+            margin-bottom: 20px;
+            animation: bounce 2s infinite;
+        }
+
+        .cat-image {
+            width: 150px;
+            height: 150px;
+            margin: 0 auto 20px;
+            animation: bounce 2s infinite;
+        }
+
+        .cat-image img {
+            width: 100%;
+            height: 100%;
+            object-fit: contain;
+        }
+
+        @keyframes bounce {
+            0%, 100% { transform: translateY(0); }
+            50% { transform: translateY(-10px); }
+        }
+
+        h1 {
+            color: #764ba2;
+            font-size: 2.5em;
+            margin-bottom: 20px;
+        }
+
+        .input-group {
+            margin: 30px 0;
+        }
+
+        input[type="text"] {
+            width: 100%;
+            padding: 15px 20px;
+            font-size: 18px;
+            border: 2px solid #e0e0e0;
+            border-radius: 15px;
+            outline: none;
+            transition: all 0.3s;
+        }
+
+        input[type="text"]:focus {
+            border-color: #764ba2;
+            box-shadow: 0 0 0 3px rgba(118, 75, 162, 0.1);
+        }
+
+        button {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            border: none;
+            padding: 15px 40px;
+            font-size: 18px;
+            border-radius: 15px;
+            cursor: pointer;
+            transition: transform 0.2s, box-shadow 0.2s;
+            font-weight: 600;
+        }
+
+        button:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 10px 25px rgba(118, 75, 162, 0.3);
+        }
+
+        button:active {
+            transform: translateY(0);
+        }
+
+        .sorry-message {
+            margin: 30px 0;
+            line-height: 1.8;
+            color: #333;
+            font-size: 18px;
+        }
+
+        .sorry-message p {
+            margin-bottom: 15px;
+        }
+
+        .highlight {
+            color: #764ba2;
+            font-weight: 600;
+        }
+
+        .hearts {
+            font-size: 30px;
+            margin: 20px 0;
+            animation: pulse 1.5s infinite;
+        }
+
+        @keyframes pulse {
+            0%, 100% { transform: scale(1); }
+            50% { transform: scale(1.1); }
+        }
+
+        .personalized-name {
+            color: #764ba2;
+            font-weight: bold;
+            font-size: 1.1em;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <!-- Name Input Form -->
+        <div class="name-form" id="nameForm">
+            <div class="emoji">💙</div>
+            <div class="input-group">
+                <input type="text" id="nameInput" placeholder="Enter your name..." required>
+            </div>
+            <button onclick="showMessage()">Continue</button>
+        </div>
+
+        <!-- Sorry Message -->
+        <div class="message-content" id="messageContent">
+            <div class="emoji">💕</div>
+            <h1>I'm Really Sorry, <span class="personalized-name" id="displayName"></span>!</h1>
+            <div class="hearts">❤️</div>
+            
+            <div class="sorry-message">
+                <p>Hey <span class="highlight" id="displayName2"></span> -</p>
+                
+                <p><strong>I am really sorry for hurting your feelings.</strong></p>
+                
+                <p>I know I am so much to handle nowadays and not understanding your feelings properly. I am really sorry for what I said to you. I hope you forgive me like always.</p>
+                
+                <p>I will make sure from next time I won't hurt you by my stupid overthinking.</p>
+                
+                <p style="margin-top: 25px;"><strong>YOU ALWAYS WILL BE MY PRECIOUS BEST FRIEND 🤗💗</strong></p>
+                
+                <p style="margin-top: 30px; font-style: italic; color: #764ba2;"><strong>Sorry and Thank you</strong> ❤️</p>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        function showMessage() {
+            const name = document.getElementById('nameInput').value.trim();
+            
+            if (name === '') {
+                alert('Please enter your name! 🥺');
+                return;
+            }
+            
+            // Check if name matches allowed names (exact match, case-sensitive)
+            const allowedNames = ['Thoshitha', 'thoshitha', 'sinchana', 'Sinchana', 'thosh', 'Thosh'];
+            
+            if (!allowedNames.includes(name)) {
+                // Just clear the input and do nothing
+                document.getElementById('nameInput').value = '';
+                return;
+            }
+            
+            document.getElementById('displayName').textContent = name;
+            document.getElementById('displayName2').textContent = name;
+            
+            document.getElementById('nameForm').style.display = 'none';
+            document.getElementById('messageContent').style.display = 'block';
+        }
+
+        document.getElementById('nameInput').addEventListener('keypress', function(e) {
+            if (e.key === 'Enter') {
+                showMessage();
+            }
+        });
+    </script>
+</body>
+</html>
